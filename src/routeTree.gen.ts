@@ -10,8 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AutomationRouteImport } from './routes/automation'
+import { Route as CampaignsRouteImport } from './routes/campaigns'
 import { Route as ChannelsRouteImport } from './routes/channels'
+import { Route as LeadsRouteImport } from './routes/leads'
 import { Route as ListingsRouteImport } from './routes/listings'
+import { Route as AutomationNewRouteImport } from './routes/automation_.new'
+import { Route as CampaignsNewRouteImport } from './routes/campaigns_.new'
 import { Route as ChannelsIdRouteImport } from './routes/channels_.$id'
 import { Route as ListingsNewRouteImport } from './routes/listings_.new'
 
@@ -20,14 +26,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationRoute = AutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsRoute = CampaignsRouteImport.update({
+  id: '/campaigns',
+  path: '/campaigns',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChannelsRoute = ChannelsRouteImport.update({
   id: '/channels',
   path: '/channels',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeadsRoute = LeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ListingsRoute = ListingsRouteImport.update({
   id: '/listings',
   path: '/listings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationNewRoute = AutomationNewRouteImport.update({
+  id: '/automation_/new',
+  path: '/automation/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsNewRoute = CampaignsNewRouteImport.update({
+  id: '/campaigns_/new',
+  path: '/campaigns/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChannelsIdRoute = ChannelsIdRouteImport.update({
@@ -43,44 +79,96 @@ const ListingsNewRoute = ListingsNewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/automation': typeof AutomationRoute
+  '/campaigns': typeof CampaignsRoute
   '/channels': typeof ChannelsRoute
+  '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/automation/new': typeof AutomationNewRoute
+  '/campaigns/new': typeof CampaignsNewRoute
   '/channels/$id': typeof ChannelsIdRoute
   '/listings/new': typeof ListingsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/automation': typeof AutomationRoute
+  '/campaigns': typeof CampaignsRoute
   '/channels': typeof ChannelsRoute
+  '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/automation/new': typeof AutomationNewRoute
+  '/campaigns/new': typeof CampaignsNewRoute
   '/channels/$id': typeof ChannelsIdRoute
   '/listings/new': typeof ListingsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/automation': typeof AutomationRoute
+  '/campaigns': typeof CampaignsRoute
   '/channels': typeof ChannelsRoute
+  '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/automation_/new': typeof AutomationNewRoute
+  '/campaigns_/new': typeof CampaignsNewRoute
   '/channels_/$id': typeof ChannelsIdRoute
   '/listings_/new': typeof ListingsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/channels' | '/listings' | '/channels/$id' | '/listings/new'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/automation'
+    | '/campaigns'
+    | '/channels'
+    | '/leads'
+    | '/listings'
+    | '/automation/new'
+    | '/campaigns/new'
+    | '/channels/$id'
+    | '/listings/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/channels' | '/listings' | '/channels/$id' | '/listings/new'
+  to:
+    | '/'
+    | '/analytics'
+    | '/automation'
+    | '/campaigns'
+    | '/channels'
+    | '/leads'
+    | '/listings'
+    | '/automation/new'
+    | '/campaigns/new'
+    | '/channels/$id'
+    | '/listings/new'
   id:
     | '__root__'
     | '/'
+    | '/analytics'
+    | '/automation'
+    | '/campaigns'
     | '/channels'
+    | '/leads'
     | '/listings'
+    | '/automation_/new'
+    | '/campaigns_/new'
     | '/channels_/$id'
     | '/listings_/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  AutomationRoute: typeof AutomationRoute
+  CampaignsRoute: typeof CampaignsRoute
   ChannelsRoute: typeof ChannelsRoute
+  LeadsRoute: typeof LeadsRoute
   ListingsRoute: typeof ListingsRoute
+  AutomationNewRoute: typeof AutomationNewRoute
+  CampaignsNewRoute: typeof CampaignsNewRoute
   ChannelsIdRoute: typeof ChannelsIdRoute
   ListingsNewRoute: typeof ListingsNewRoute
 }
@@ -94,6 +182,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation': {
+      id: '/automation'
+      path: '/automation'
+      fullPath: '/automation'
+      preLoaderRoute: typeof AutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns': {
+      id: '/campaigns'
+      path: '/campaigns'
+      fullPath: '/campaigns'
+      preLoaderRoute: typeof CampaignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/channels': {
       id: '/channels'
       path: '/channels'
@@ -101,11 +210,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChannelsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leads': {
+      id: '/leads'
+      path: '/leads'
+      fullPath: '/leads'
+      preLoaderRoute: typeof LeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/listings': {
       id: '/listings'
       path: '/listings'
       fullPath: '/listings'
       preLoaderRoute: typeof ListingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation_/new': {
+      id: '/automation_/new'
+      path: '/automation/new'
+      fullPath: '/automation/new'
+      preLoaderRoute: typeof AutomationNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns_/new': {
+      id: '/campaigns_/new'
+      path: '/campaigns/new'
+      fullPath: '/campaigns/new'
+      preLoaderRoute: typeof CampaignsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/channels_/$id': {
@@ -127,8 +257,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  AutomationRoute: AutomationRoute,
+  CampaignsRoute: CampaignsRoute,
   ChannelsRoute: ChannelsRoute,
+  LeadsRoute: LeadsRoute,
   ListingsRoute: ListingsRoute,
+  AutomationNewRoute: AutomationNewRoute,
+  CampaignsNewRoute: CampaignsNewRoute,
   ChannelsIdRoute: ChannelsIdRoute,
   ListingsNewRoute: ListingsNewRoute,
 }
