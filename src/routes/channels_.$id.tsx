@@ -3,7 +3,7 @@ import { ChevronLeft, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { Button, ChartCard, MetricCard, PageHeader, PlatformIcon, StatusBadge } from "@/components/kit";
 import { TrendArea } from "@/components/charts";
-import { channels, fmt, listings } from "@/lib/mock";
+import { channels, fmt, listings, series } from "@/lib/mock";
 import { Thumb } from "./listings";
 
 export const Route = createFileRoute("/channels_/$id")({
@@ -24,7 +24,7 @@ function ChannelDetail() {
         <MetricCard label="Items synced" value={String(c.items)} /><MetricCard label="Views" value={fmt(items.reduce((a, b) => a + b.views, 0))} delta={9.2} /><MetricCard label="Leads" value={fmt(items.reduce((a, b) => a + b.leads, 0))} delta={6.1} /><MetricCard label="Sync success" value={c.health === "Healthy" ? "99.4%" : "91.2%"} />
       </div>
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
-        <ChartCard title="Views from this channel" className="lg:col-span-2"><TrendArea data={[]} x="day" y="views" /></ChartCard>
+        <ChartCard title="Views from this channel" className="lg:col-span-2"><TrendArea data={series} x="day" y="views" /></ChartCard>
         <ChartCard title="Sync history"><ul className="space-y-2.5 text-sm">{["Synced 42 items", "Synced 41 items", c.health === "Healthy" ? "Synced 41 items" : "3 items failed — missing RERA ID", "Synced 40 items"].map((s, i) => <li key={i} className="flex justify-between"><span>{s}</span><span className="text-muted-foreground">{i * 15 + 2}m ago</span></li>)}</ul></ChartCard>
       </div>
       <div className="card mt-4 divide-y">

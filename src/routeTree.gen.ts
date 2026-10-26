@@ -16,10 +16,16 @@ import { Route as CampaignsRouteImport } from './routes/campaigns'
 import { Route as ChannelsRouteImport } from './routes/channels'
 import { Route as LeadsRouteImport } from './routes/leads'
 import { Route as ListingsRouteImport } from './routes/listings'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SigninRouteImport } from './routes/signin'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as AutomationNewRouteImport } from './routes/automation_.new'
 import { Route as CampaignsNewRouteImport } from './routes/campaigns_.new'
 import { Route as ChannelsIdRouteImport } from './routes/channels_.$id'
 import { Route as ListingsNewRouteImport } from './routes/listings_.new'
+import { Route as SettingsBillingRouteImport } from './routes/settings_.billing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,6 +62,31 @@ const ListingsRoute = ListingsRouteImport.update({
   path: '/listings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AutomationNewRoute = AutomationNewRouteImport.update({
   id: '/automation_/new',
   path: '/automation/new',
@@ -76,6 +107,11 @@ const ListingsNewRoute = ListingsNewRouteImport.update({
   path: '/listings/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsBillingRoute = SettingsBillingRouteImport.update({
+  id: '/settings_/billing',
+  path: '/settings/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,10 +121,16 @@ export interface FileRoutesByFullPath {
   '/channels': typeof ChannelsRoute
   '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/signin': typeof SigninRoute
+  '/team': typeof TeamRoute
   '/automation/new': typeof AutomationNewRoute
   '/campaigns/new': typeof CampaignsNewRoute
   '/channels/$id': typeof ChannelsIdRoute
   '/listings/new': typeof ListingsNewRoute
+  '/settings/billing': typeof SettingsBillingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -98,10 +140,16 @@ export interface FileRoutesByTo {
   '/channels': typeof ChannelsRoute
   '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/signin': typeof SigninRoute
+  '/team': typeof TeamRoute
   '/automation/new': typeof AutomationNewRoute
   '/campaigns/new': typeof CampaignsNewRoute
   '/channels/$id': typeof ChannelsIdRoute
   '/listings/new': typeof ListingsNewRoute
+  '/settings/billing': typeof SettingsBillingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -112,10 +160,16 @@ export interface FileRoutesById {
   '/channels': typeof ChannelsRoute
   '/leads': typeof LeadsRoute
   '/listings': typeof ListingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/signin': typeof SigninRoute
+  '/team': typeof TeamRoute
   '/automation_/new': typeof AutomationNewRoute
   '/campaigns_/new': typeof CampaignsNewRoute
   '/channels_/$id': typeof ChannelsIdRoute
   '/listings_/new': typeof ListingsNewRoute
+  '/settings_/billing': typeof SettingsBillingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,10 +181,16 @@ export interface FileRouteTypes {
     | '/channels'
     | '/leads'
     | '/listings'
+    | '/notifications'
+    | '/profile'
+    | '/settings'
+    | '/signin'
+    | '/team'
     | '/automation/new'
     | '/campaigns/new'
     | '/channels/$id'
     | '/listings/new'
+    | '/settings/billing'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -140,10 +200,16 @@ export interface FileRouteTypes {
     | '/channels'
     | '/leads'
     | '/listings'
+    | '/notifications'
+    | '/profile'
+    | '/settings'
+    | '/signin'
+    | '/team'
     | '/automation/new'
     | '/campaigns/new'
     | '/channels/$id'
     | '/listings/new'
+    | '/settings/billing'
   id:
     | '__root__'
     | '/'
@@ -153,10 +219,16 @@ export interface FileRouteTypes {
     | '/channels'
     | '/leads'
     | '/listings'
+    | '/notifications'
+    | '/profile'
+    | '/settings'
+    | '/signin'
+    | '/team'
     | '/automation_/new'
     | '/campaigns_/new'
     | '/channels_/$id'
     | '/listings_/new'
+    | '/settings_/billing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -167,10 +239,16 @@ export interface RootRouteChildren {
   ChannelsRoute: typeof ChannelsRoute
   LeadsRoute: typeof LeadsRoute
   ListingsRoute: typeof ListingsRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  SettingsRoute: typeof SettingsRoute
+  SigninRoute: typeof SigninRoute
+  TeamRoute: typeof TeamRoute
   AutomationNewRoute: typeof AutomationNewRoute
   CampaignsNewRoute: typeof CampaignsNewRoute
   ChannelsIdRoute: typeof ChannelsIdRoute
   ListingsNewRoute: typeof ListingsNewRoute
+  SettingsBillingRoute: typeof SettingsBillingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -224,6 +302,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/automation_/new': {
       id: '/automation_/new'
       path: '/automation/new'
@@ -252,6 +365,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings_/billing': {
+      id: '/settings_/billing'
+      path: '/settings/billing'
+      fullPath: '/settings/billing'
+      preLoaderRoute: typeof SettingsBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -263,10 +383,16 @@ const rootRouteChildren: RootRouteChildren = {
   ChannelsRoute: ChannelsRoute,
   LeadsRoute: LeadsRoute,
   ListingsRoute: ListingsRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  SettingsRoute: SettingsRoute,
+  SigninRoute: SigninRoute,
+  TeamRoute: TeamRoute,
   AutomationNewRoute: AutomationNewRoute,
   CampaignsNewRoute: CampaignsNewRoute,
   ChannelsIdRoute: ChannelsIdRoute,
   ListingsNewRoute: ListingsNewRoute,
+  SettingsBillingRoute: SettingsBillingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
