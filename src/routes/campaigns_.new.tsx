@@ -1,7 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button, Field, Input, PageHeader, PlatformIcon, Select, Stepper } from "@/components/kit";
+import { Button, Field, Input, PageHeader, PlatformIcon, Select } from "@/components/kit";
+import { Stepper } from "./listings_.new";
 import { listings, platforms, type PlatformId } from "@/lib/mock";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
