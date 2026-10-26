@@ -10,33 +10,79 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChannelsRouteImport } from './routes/channels'
+import { Route as ListingsRouteImport } from './routes/listings'
+import { Route as ChannelsIdRouteImport } from './routes/channels_.$id'
+import { Route as ListingsNewRouteImport } from './routes/listings_.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChannelsRoute = ChannelsRouteImport.update({
+  id: '/channels',
+  path: '/channels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingsRoute = ListingsRouteImport.update({
+  id: '/listings',
+  path: '/listings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChannelsIdRoute = ChannelsIdRouteImport.update({
+  id: '/channels_/$id',
+  path: '/channels/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingsNewRoute = ListingsNewRouteImport.update({
+  id: '/listings_/new',
+  path: '/listings/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/channels': typeof ChannelsRoute
+  '/listings': typeof ListingsRoute
+  '/channels/$id': typeof ChannelsIdRoute
+  '/listings/new': typeof ListingsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/channels': typeof ChannelsRoute
+  '/listings': typeof ListingsRoute
+  '/channels/$id': typeof ChannelsIdRoute
+  '/listings/new': typeof ListingsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/channels': typeof ChannelsRoute
+  '/listings': typeof ListingsRoute
+  '/channels_/$id': typeof ChannelsIdRoute
+  '/listings_/new': typeof ListingsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/channels' | '/listings' | '/channels/$id' | '/listings/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/channels' | '/listings' | '/channels/$id' | '/listings/new'
+  id:
+    | '__root__'
+    | '/'
+    | '/channels'
+    | '/listings'
+    | '/channels_/$id'
+    | '/listings_/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChannelsRoute: typeof ChannelsRoute
+  ListingsRoute: typeof ListingsRoute
+  ChannelsIdRoute: typeof ChannelsIdRoute
+  ListingsNewRoute: typeof ListingsNewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +94,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/channels': {
+      id: '/channels'
+      path: '/channels'
+      fullPath: '/channels'
+      preLoaderRoute: typeof ChannelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listings': {
+      id: '/listings'
+      path: '/listings'
+      fullPath: '/listings'
+      preLoaderRoute: typeof ListingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/channels_/$id': {
+      id: '/channels_/$id'
+      path: '/channels/$id'
+      fullPath: '/channels/$id'
+      preLoaderRoute: typeof ChannelsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listings_/new': {
+      id: '/listings_/new'
+      path: '/listings/new'
+      fullPath: '/listings/new'
+      preLoaderRoute: typeof ListingsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChannelsRoute: ChannelsRoute,
+  ListingsRoute: ListingsRoute,
+  ChannelsIdRoute: ChannelsIdRoute,
+  ListingsNewRoute: ListingsNewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
