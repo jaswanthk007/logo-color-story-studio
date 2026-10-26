@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { Fragment, useMemo, useState, type ReactNode } from "react";
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, Columns3, Search, X } from "lucide-react";
 import * as DM from "@radix-ui/react-dropdown-menu";
 import { Button, Checkbox, EmptyState, Input } from "./kit";
@@ -96,14 +96,14 @@ export function DataTable<T extends { id: string }>({
               </thead>
               <tbody>
                 {view.map((r) => (
-                  <>
-                    <tr key={r.id} onClick={() => (expand ? setOpen(open === r.id ? null : r.id) : onRowClick?.(r))}
+                  <Fragment key={r.id}>
+                    <tr onClick={() => (expand ? setOpen(open === r.id ? null : r.id) : onRowClick?.(r))}
                       className={cn("group border-t transition-colors hover:bg-accent/50", (onRowClick || expand) && "cursor-pointer", sel.has(r.id) && "bg-primary-soft/50")}>
                       {bulk && <td className="px-3 py-2.5"><Checkbox checked={sel.has(r.id)} onChange={() => toggle(r.id)} /></td>}
                       {cols.map((c) => <td key={c.key} className={cn("px-3 py-2.5 align-middle", c.align === "right" && "text-right num")}>{c.cell(r)}</td>)}
                     </tr>
                     {expand && open === r.id && <tr key={r.id + "x"} className="bg-background"><td colSpan={cols.length + 1} className="px-4 py-3">{expand(r)}</td></tr>}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
